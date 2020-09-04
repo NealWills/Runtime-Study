@@ -73,3 +73,13 @@ oc代码的运行过程为：OC语言 -> c++ -> 汇编语言 -> 机器语言
 ```
 `共用体`与`结构体`表达式相类似，单其所有成员共用一块`内存`，也就是其中任意一个值改变，其他的值也会随之改变，共用体所占的内存取决于成员最大的占用内存
 
+#### 编译
+```
+    
+    clang -rewrite-objc main.m -o -main.mm
+
+    // 针对平台进行优化
+    xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.mm
+```
+如果出现Foundation库丢失的情况，是因为mac未指定xcode，无法定位到xcode包，执行`sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/`便可以解决这个问题。
+
